@@ -1,10 +1,12 @@
-import {createContext} from 'react';
+import {createContext, useState} from 'react';
 
 const {Provider, Consumer} = createContext();
 
 function ContextProvider(props) {
+  const [allPhotos, setAllPhotos] = useState([]);
+
   return (
-    <Provider value="">
+    <Provider value={{allPhotos}}>
       {props.children}
     </Provider>
   );
