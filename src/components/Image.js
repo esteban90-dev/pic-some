@@ -1,14 +1,25 @@
 import React from 'react';
+import {Context} from '../context';
+import PropTypes from 'prop-types';
 
-export default function Image(props) {
+function Image(props) {
   const [isHovered, setIsHovered] = React.useState(false);
 
-  const heartIcon = isHovered && <i className="ri-heart-line favorite"></i>
+  const {toggleFavorite} = React.useContext(Context);
+
+  const heartIcon = isHovered &&
+    <i
+      className={props.img.isFavorite ? 
+        "ri-heart-fill favorite" : 
+        "ri-heart-line favorite"}
+      onClick={() => toggleFavorite(props.img.id)}
+    ></i>
+
   const cartIcon = isHovered && <i className="ri-add-circle-line cart"></i>
 
   function handleEnter(event) {
     setIsHovered(true);
-  }
+  }  
 
   function handleLeave(event) {
     setIsHovered(false);
@@ -16,13 +27,13 @@ export default function Image(props) {
 
   return (
     <div
-      className={props.className}
+      className={`image__container  ${props.img.className}`}
       onMouseEnter={handleEnter} 
       onMouseLeave={handleLeave}
     >
       <img
         className="gallery__image"
-        src={props.url}
+        src={props.img.url}
         alt=""
       />
       {heartIcon}
@@ -30,3 +41,14 @@ export default function Image(props) {
     </div>
   );
 }
+
+Image.propTypes = {
+  img: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool,
+    className: PropTypes.string,
+  })
+}
+
+export default Image;

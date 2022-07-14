@@ -27,13 +27,11 @@ body {
 }
 
 .image__container--big {
-  position: relative;
   grid-row: span 2;
   grid-column: span 2;
 }
 
 .image__container--tall {
-  position: relative;
   grid-row: span 2;
 }
 

@@ -1,19 +1,21 @@
 import React from 'react';
 import {Context} from '../context';
 import Image from '../components/Image';
-import {imageSizer} from '../imageSizer';
+import {getClass} from '../getClass';
 
 export default function Photos() {
   const {allPhotos} = React.useContext(Context);
 
-  const images = allPhotos.map( photo => {
+  const images = allPhotos.map( (photo, i) => {
     return (
       <Image
         key={photo.id}
-        id={photo.id}
-        url={photo.url}
-        className={imageSizer()}
-        isFavorite={photo.isFavorite}
+        img={{
+          id: photo.id,
+          url: photo.url,
+          isFavorite: photo.isFavorite,
+          className: getClass(i),
+        }}
       />
     );
   });
