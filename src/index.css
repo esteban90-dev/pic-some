@@ -88,6 +88,14 @@ body {
   width: 200px;
 }
 
+.cartItem__imageContainer i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
 .cartItem__image {
   position: absolute;
   width: 100%;
