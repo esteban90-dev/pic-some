@@ -44,7 +44,7 @@ function Image(props) {
 
   return (
     <div
-      className={`image__container  ${props.className}`}
+      className={`gallery__imageContainer  ${props.className}`}
       onMouseEnter={handleEnter} 
       onMouseLeave={handleLeave}
     >
