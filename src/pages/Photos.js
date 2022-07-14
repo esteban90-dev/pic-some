@@ -9,6 +9,7 @@ export default function Photos() {
     return (
       <Image
         key={photo.id}
+        id={photo.id}
         url={photo.url}
         isFavorite={photo.isFavorite}
       />
@@ -18,7 +19,9 @@ export default function Photos() {
   return (
     <>
       <h1>Photos</h1>
-      {images}
+      <div className="gallery">
+        {images}
+      </div>
     </>
   )
 }
