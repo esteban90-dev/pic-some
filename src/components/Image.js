@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function Image(props) {
   const [isHovered, setIsHovered] = React.useState(false);
 
-  const {toggleFavorite, addToCart, cartItems} = React.useContext(Context);
+  const {toggleFavorite, addToCart, removeFromCart, cartItems} = React.useContext(Context);
 
   function itemIsInCart() {
     if (cartItems.find(cartItem => cartItem.id === props.img.id)) {
@@ -26,7 +26,7 @@ function Image(props) {
   function cartIcon() {
     if (itemIsInCart()) {
       return (
-        <i className="ri-shopping-cart-fill cart"></i>
+        <i className="ri-shopping-cart-fill cart" onClick={() => removeFromCart(props.img)}></i>
       )
     }
     else if (isHovered) {
