@@ -13,7 +13,7 @@ export default function Cart() {
     <main className="cart__page">
       <h1 className="cart__title">Check Out</h1>
      {cartItemElements}
-     <h3 className="cart__total">Total:</h3>
+     <h2 className="cart__total">Total:</h2>
      <div className="cart__buttonContainer">
       <button className="cart__orderButton">Place Order</button>
      </div>
