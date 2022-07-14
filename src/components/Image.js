@@ -5,21 +5,34 @@ import PropTypes from 'prop-types';
 function Image(props) {
   const [isHovered, setIsHovered] = React.useState(false);
 
-  const {toggleFavorite, addToCart} = React.useContext(Context);
+  const {toggleFavorite, addToCart, cartItems} = React.useContext(Context);
 
-  const heartIcon = isHovered &&
-    <i
-      className={props.img.isFavorite ? 
-        "ri-heart-fill favorite" : 
-        "ri-heart-line favorite"}
-      onClick={() => toggleFavorite(props.img.id)}
-    ></i>
+  function itemIsInCart() {
+    if (cartItems.find(cartItem => cartItem.id === props.img.id)) {
+      return true;
+    }
+    return false;
+  }
 
-  const cartIcon = isHovered && 
-    <i
-      className="ri-add-circle-line cart"
-      onClick={() => addToCart(props.img)}
-    ></i>
+  function heartIcon() {
+    if (props.img.isFavorite) {
+      return <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(props.img.id)}></i>
+    }
+    else if (isHovered) {
+        return <i className="ri-heart-line favorite" onClick={() => toggleFavorite(props.img.id)}></i>
+    }
+  }
+
+  function cartIcon() {
+    if (itemIsInCart()) {
+      return (
+        <i className="ri-shopping-cart-fill cart"></i>
+      )
+    }
+    else if (isHovered) {
+      return <i className="ri-add-circle-line cart" onClick={() => addToCart(props.img)}></i>
+    }
+  }
 
   function handleEnter(event) {
     setIsHovered(true);
@@ -40,8 +53,8 @@ function Image(props) {
         src={props.img.url}
         alt=""
       />
-      {heartIcon}
-      {cartIcon}
+      {heartIcon()}
+      {cartIcon()}
     </div>
   );
 }
