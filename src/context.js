@@ -1,6 +1,6 @@
 import {createContext, useEffect, useState} from 'react';
 
-const {Provider, Consumer} = createContext();
+const Context = createContext();
 
 function ContextProvider(props) {
   const [allPhotos, setAllPhotos] = useState([]);
@@ -14,10 +14,10 @@ function ContextProvider(props) {
   }, []);
 
   return (
-    <Provider value={{allPhotos}}>
+    <Context.Provider value={{allPhotos}}>
       {props.children}
-    </Provider>
+    </Context.Provider>
   );
 }
 
-export {ContextProvider, Consumer as ContextConsumer};
+export {ContextProvider, Context};
