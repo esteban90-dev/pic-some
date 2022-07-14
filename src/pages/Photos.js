@@ -10,12 +10,8 @@ export default function Photos() {
     return (
       <Image
         key={photo.id}
-        img={{
-          id: photo.id,
-          url: photo.url,
-          isFavorite: photo.isFavorite,
-          className: getClass(i),
-        }}
+        img={photo}
+        className={getClass(i)}
       />
     );
   });

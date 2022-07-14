@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function Image(props) {
   const [isHovered, setIsHovered] = React.useState(false);
 
-  const {toggleFavorite} = React.useContext(Context);
+  const {toggleFavorite, addToCart} = React.useContext(Context);
 
   const heartIcon = isHovered &&
     <i
@@ -15,7 +15,11 @@ function Image(props) {
       onClick={() => toggleFavorite(props.img.id)}
     ></i>
 
-  const cartIcon = isHovered && <i className="ri-add-circle-line cart"></i>
+  const cartIcon = isHovered && 
+    <i
+      className="ri-add-circle-line cart"
+      onClick={() => addToCart(props.img)}
+    ></i>
 
   function handleEnter(event) {
     setIsHovered(true);
@@ -27,7 +31,7 @@ function Image(props) {
 
   return (
     <div
-      className={`image__container  ${props.img.className}`}
+      className={`image__container  ${props.className}`}
       onMouseEnter={handleEnter} 
       onMouseLeave={handleLeave}
     >
