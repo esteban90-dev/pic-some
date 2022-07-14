@@ -1,6 +1,7 @@
 import React from 'react';
 import {Context} from '../context';
 import Image from '../components/Image';
+import {imageSizer} from '../imageSizer';
 
 export default function Photos() {
   const {allPhotos} = React.useContext(Context);
@@ -11,6 +12,7 @@ export default function Photos() {
         key={photo.id}
         id={photo.id}
         url={photo.url}
+        className={imageSizer()}
         isFavorite={photo.isFavorite}
       />
     );
