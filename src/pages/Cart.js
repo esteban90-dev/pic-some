@@ -13,7 +13,7 @@ export default function Cart() {
   function totalCost() {
     // we are using $5.99 as a fake cost,
     // so just multiply that times number of cart items
-    return cartItems.length * 5.99;
+    return (cartItems.length * 5.99).toFixed(2);
   }
 
   function placeOrder() {
