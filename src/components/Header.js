@@ -9,10 +9,10 @@ export default function Header() {
 
   return (
     <header className="header">
-      <Link to="/">
+      <Link to="/pic-some">
         <h1>Pic Some</h1>
       </Link>
-      <Link to="/cart">
+      <Link to="/pic-some/cart">
         {isCartFull ? 
         <i className="ri-shopping-cart-fill ri-fw ri-2x"></i> :
         <i className="ri-shopping-cart-line ri-fw ri-2x"></i>

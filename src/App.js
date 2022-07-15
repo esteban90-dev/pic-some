@@ -9,8 +9,8 @@ export default function App() {
     <>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Photos />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route exact path="/pic-some" element={<Photos />}></Route>
+        <Route path="/pic-some/cart" element={<Cart />}></Route>
       </Routes>
     </>
   )
