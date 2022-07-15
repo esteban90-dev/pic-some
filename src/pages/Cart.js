@@ -33,16 +33,20 @@ export default function Cart() {
     <main className="cart__page">
       <h1 className="cart__title">Check Out</h1>
      {cartItemElements}
-     <h2 className="cart__total">Total: ${totalCost()}</h2>
-     {cartItems.length > 0 &&
-      <div className="cart__buttonContainer">
-        <button className="cart__orderButton" onClick={placeOrder}>
-          {isOrdered ?
-            "Ordering..." :
-            "Place Order"
-          }
-        </button>
-      </div>
+     {cartItems.length > 0 ?
+      <>
+        <h2 className="cart__total">Total: ${totalCost()}</h2>
+        <div className="cart__buttonContainer">
+          <button className="cart__orderButton" onClick={placeOrder}>
+            {isOrdered ?
+              "Ordering..." :
+              "Place Order"
+            }
+          </button>
+        </div> 
+      </>
+      :
+      <h2 className="cart__noItems">There are no items in the cart</h2>
      }
     </main>
   );

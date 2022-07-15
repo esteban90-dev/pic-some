@@ -121,6 +121,10 @@ body {
   color: rgb(99, 186, 215);
 }
 
+.cart__noItems {
+  text-align: center;
+}
+
 @media screen and (max-width: 350px) {
   .gallery {
     display: grid;
