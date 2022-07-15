@@ -1,22 +1,15 @@
 import React from 'react';
 import {Context} from '../context';
 import PropTypes from 'prop-types';
+import useHover from '../useHover';
 
 export default function CartItem(props) {
   const {item} = props;
-  const [isHovered, setIsHovered] = React.useState(false);
+  const {isHovered, handleMouseEnter, handleMouseLeave} = useHover();
 
   const {removeFromCart} = React.useContext(Context);
 
   const trashIconClass = isHovered ? "ri-delete-bin-fill" : "ri-delete-bin-line";
-
-  function handleMouseEnter() {
-    setIsHovered(true);
-  }
-
-  function handleMouseLeave() {
-    setIsHovered(false);
-  }
 
   return (
     <section className="cartItem">

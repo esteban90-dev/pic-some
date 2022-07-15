@@ -1,9 +1,10 @@
 import React from 'react';
 import {Context} from '../context';
 import PropTypes from 'prop-types';
+import useHover from '../useHover';
 
 function Image(props) {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const {isHovered, handleMouseEnter, handleMouseLeave} = useHover();
 
   const {toggleFavorite, addToCart, removeFromCart, cartItems} = React.useContext(Context);
 
@@ -34,19 +35,11 @@ function Image(props) {
     }
   }
 
-  function handleEnter(event) {
-    setIsHovered(true);
-  }  
-
-  function handleLeave(event) {
-    setIsHovered(false);
-  }
-
   return (
     <div
       className={`gallery__imageContainer  ${props.className}`}
-      onMouseEnter={handleEnter} 
-      onMouseLeave={handleLeave}
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave}
     >
       <img
         className="gallery__image"
