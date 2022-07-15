@@ -1,5 +1,6 @@
 import React from 'react';
 import {Context} from '../context';
+import PropTypes from 'prop-types';
 
 export default function CartItem(props) {
   const {item} = props;
@@ -32,4 +33,10 @@ export default function CartItem(props) {
       <h2>$5.99</h2>
     </section>
   )
+}
+
+CartItem.propTypes = {
+  item: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  })
 }
